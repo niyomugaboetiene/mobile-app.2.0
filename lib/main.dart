@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'My Flutter App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Color.fromARGB(255, 45, 255, 22),
+          seedColor: const Color.fromARGB(255, 6, 166, 211),
         ),
         useMaterial3: true,
       ),
