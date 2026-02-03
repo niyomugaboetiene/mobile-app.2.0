@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'My Flutter App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 29, 215, 8),
+          seedColor: Color.fromARGB(255, 45, 255, 22),
         ),
         useMaterial3: true,
       ),
@@ -71,6 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+    
 
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -97,6 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+      
     );
   }
 }
