@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'task1.dart';
+import 'counter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,95 +12,49 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My Flutter App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 6, 166, 211),
-        ),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'My Flutter App'),
+      debugShowCheckedModeBanner: false,
+      home: const HomeScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
-
-  void _resetCounter() {
-    setState(() {
-      _counter = 0;
-    });
-  }
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(title: const Text("Flutter Practice App")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Counting program:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            ElevatedButton(
+              child: const Text("Open Counter App"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CounterPage(title: "Counter App"),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              child: const Text("Open Profile Editor"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ProfileEditor(),
+                  ),
+                );
+              },
             ),
           ],
         ),
       ),
-    
-
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            heroTag: 'add',
-            onPressed: _incrementCounter,
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
-          ),
-          const SizedBox(width: 10),
-          FloatingActionButton(
-            heroTag: 'remove',
-            onPressed: _decrementCounter,
-            tooltip: 'Decrement',
-            child: const Icon(Icons.remove),
-          ),
-          const SizedBox(width: 10),
-          FloatingActionButton(
-            heroTag: 'reset',
-            onPressed: _resetCounter,
-            tooltip: 'Reset',
-            child: const Icon(Icons.refresh),
-          ),
-        ],
-      ),
-      
     );
   }
 }
